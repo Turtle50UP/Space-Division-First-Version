@@ -8,6 +8,7 @@ public class BasicPlayerMovement : MonoBehaviour
      * Basic:
      * int: signed integers {0, 42, -42}
      * float: signed decimals {0f, 0.42f, -0.42f}
+     *      Hey, float math is unity math, not just that doubles suck
      * bool: boolean (truth values) {true, false}
      * string: string of characters {"hello", " world"}
      * 
@@ -29,8 +30,8 @@ public class BasicPlayerMovement : MonoBehaviour
      * gameObject.GetComponent<T>(): Gets the component T from the named gameObject (can be this etc.)
      */
 
-    Rigidbody2D player;
-    public float velocity;
+    Rigidbody2D rigidbody2d; //rigidbody
+    public float velocity; //SPEED, DUH
 
     /* Start:
      * Everything here is run once, whenever the object with this script first appears.
@@ -38,7 +39,7 @@ public class BasicPlayerMovement : MonoBehaviour
 
     void Start()
     {
-        player = this.GetComponent<Rigidbody2D>();
+        rigidbody2d = this.GetComponent<Rigidbody2D>();
     }
     
     /* Update:
@@ -46,26 +47,26 @@ public class BasicPlayerMovement : MonoBehaviour
      */
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W))
         {
-            player.velocity = velocity * Vector2.up;
+            rigidbody2d.velocity = velocity * Vector2.up;
         }
-        else if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S))
         {
-            player.velocity = new Vector2(0, -velocity);
+            rigidbody2d.velocity = new Vector2(0, -velocity);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A))
         {
-            player.velocity = velocity * Vector2.left;
-            Debug.Log("Left");
+            rigidbody2d.velocity = velocity * Vector2.left;
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.D))
         {
-            player.velocity = velocity * Vector2.right;
+            rigidbody2d.velocity = velocity * Vector2.right;
+            //Obj rel up "this.transform.up/right/left/down"
         }
         else
         {
-            player.velocity = Vector2.zero;
+            rigidbody2d.velocity = Vector2.zero;
         }
     }
 }
