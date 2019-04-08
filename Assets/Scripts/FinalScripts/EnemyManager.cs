@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    /* This provides the enemy with a value to be divided, as well as checking if it can divide upon collision with a laser.
+     */
+
     public int value;
     public GameManager gm;
     public int id;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {   
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

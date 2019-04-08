@@ -5,6 +5,17 @@ using UnityEngine.UI;
 
 /* GameManager:
  * Manages the game, with management of UI elements and tracking/control of the game state set here.
+ * 
+ * Your game should have one of these, as this is the backbone to the main game loop in a digital game.
+ * Because of how intricately it operates with events in the game, it should be the only script that handles UI elements.
+ * 
+ * Images:
+ * Images on the UI have a transform similar to 2D GameObjects. It also has things like an alpha channel
+ * that can be changed for changing the element's visibility
+ * 
+ * Text:
+ * Text in a UI element has a string attached that represents the contained text of that UI element. It also has a lot of the same
+ * object components as Images (transform, visibility)
  */
 
 public class GameManager : MonoBehaviour
@@ -45,6 +56,8 @@ public class GameManager : MonoBehaviour
      * Specifically, this relates to the UI elements which follow players and enemies.
      * Following the player is simply transforming player coordinates in world space to screen space,
      * and setting the anchorePosition of the UI element to be relative to the player's postition.
+     * 
+     * Remember, all objects have different reference frames to them, which is why the transforms are necessary.
      */
     void DrawUIElements()
     {
@@ -59,6 +72,8 @@ public class GameManager : MonoBehaviour
         DrawLabels();
     }
 
+    /* This allows us to draw the heart images representing the player's current health, as well as have it follow the player.
+     */
     public void DrawHealth()
     {
         Vector3 playerLocInScreen = thisCam.WorldToScreenPoint(player.transform.position);
@@ -77,6 +92,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /* This method is useful for ensuring that the game loops properly. It also includes a HiScore text updater.
+     */
     private void Reset()
     {
         if(hiScore < score)

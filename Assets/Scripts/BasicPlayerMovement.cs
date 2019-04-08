@@ -8,7 +8,7 @@ public class BasicPlayerMovement : MonoBehaviour
      * Basic:
      * int: signed integers {0, 42, -42}
      * float: signed decimals {0f, 0.42f, -0.42f}
-     *      Hey, float math is unity math, not just that doubles suck
+     *      Mathematics in Unity are optimized for floats (Mathf)
      * bool: boolean (truth values) {true, false}
      * string: string of characters {"hello", " world"}
      * 
@@ -33,6 +33,11 @@ public class BasicPlayerMovement : MonoBehaviour
     Rigidbody2D rigidbody2d; //rigidbody
     public float velocity; //SPEED, DUH
 
+    /* The Unity Loop:
+     * Start: Whenever an object first exists in Unity, it executes it's Start function.
+     * Update: For each frame of the game, Update executes for each object with Update functions.
+     */
+
     /* Start:
      * Everything here is run once, whenever the object with this script first appears.
      */
@@ -47,6 +52,14 @@ public class BasicPlayerMovement : MonoBehaviour
      */
     void Update()
     {
+        /* Key Events:
+         * Each keypress has a moment when the key is going from off to on (KeyDown), staying on (Key), and going from on to off (KeyUp).
+         * These can be handled as booleans to get desired effects when a key is pressed.
+         * 
+         * Vectors:
+         * Unity vectors are "overloaded", as in that you can do operations with them without having to do things like calling functions to add/multiply stuff with them.
+         * Plus, there are multiple ways to create vectors of particular quantities, as demonstrated a little bit here.
+         */
         if (Input.GetKey(KeyCode.W))
         {
             rigidbody2d.velocity = velocity * Vector2.up;

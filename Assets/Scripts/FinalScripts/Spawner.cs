@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    /* Spawner:
+     * This allows for the spawning of enemies. It is a good rule of thumb to include ways of keeping track
+     * of all instantiated objects, which is why a List is used to do exactly that.
+     * When an enemy spawns, it gets added to the list. When it despawns, it gets removed.
+     * Since they are all tracked by the list, this means that resetting the game is easy; just keep despawning enemies
+     * until the list containing them is empty.
+     * If you learned anything about pointers, this is where that mainly comes in. The List contains pointers to the spawned
+     * enemies.
+     * It is important to be careful when working with arrays of pointers like this.
+     * For example, despawning an enemy outside of this Spawner class means that the object may be despawned, but
+     * the node in the List here still attempts to point to the now gone enemy.
+     */
+
     public GameObject[] enemyPrefabs;
     public int defaultSpeed;
     public Vector2 spawnRange;

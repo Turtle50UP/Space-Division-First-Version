@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ProjectileManager : MonoBehaviour
 {
+    /* ProjectileManager:
+     * This is used to contain some useful information on constants used by the projectile. I separated this from the projectile behavior for cleaner code.
+     */
+
     public int divisor;
     Rigidbody2D projRB;
     float speed = 15f;

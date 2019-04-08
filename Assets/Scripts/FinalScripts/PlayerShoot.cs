@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
+    /* PlayerShoot:
+     * This allows the player to shoot a laser corresponding to a particular divisor. The player selects the divisor with Q ard E, and then shoots with Space
+     * 
+     * This best demonstrates Instantiation.
+     * 
+     * Sound:
+     * To play sound, create an AudioSource in the game connected to the sound you want to play, reference the audio source as a variable, then call the method Play on it.
+     */
 
     public GameObject laser;
     public Vector2 offset;
